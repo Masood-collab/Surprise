@@ -1,1 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Mystery ✦</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div id="ambient"></div>
+<div id="particles"></div>
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- ==============================
+     START
+================================ -->
+
+<section id="start" class="screen active">
+
+    <div class="orbit"></div>
+
+    <div class="eyebrow">A SECRET HAS BEEN PREPARED</div>
+
+    <div class="start-symbol">✦</div>
+
+    <h1>
+        Something<br>
+        <span>unexpected</span>
+        awaits.
+    </h1>
+
+    <p>
+        Four little surprises.<br>
+        One beautiful journey.
+    </p>
+
+    <button onclick="startExperience()">
+        Begin the mystery ✦
+    </button>
+
+</section>
+
+
+<!-- ==============================
+     STAGE 1 — MYSTERY BOX
+================================ -->
+
+<section id="boxStage" class="screen">
+
+    <div class="stage-count">01 / 04</div>
+
+    <div class="eyebrow">THE FIRST SECRET</div>
+
+    <h2>
+        There's something<br>
+        inside the box.
+    </h2>
+
+    <div class="mystery-box" onclick="openBox()">
+
+        <div class="box-aura"></div>
+
+        <div class="box-lid">
+            <div class="box-ribbon"></div>
+        </div>
+
+        <div class="box-body">
+            <div class="box-ribbon"></div>
+        </div>
+
+    </div>
+
+    <p id="boxHint">
+        Tap the box to open it
+    </p>
+
+    <div id="boxMessage" class="hidden-message">
+        <span>✦</span>
+        A little celebration is waiting...
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     BALLOON POP
+================================ -->
+
+<section id="balloonStage" class="screen">
+
+    <div class="stage-count">01 / 04</div>
+
+    <div class="eyebrow">POP THE MOMENTS</div>
+
+    <h2>
+        Find all<br>
+        seven surprises.
+    </h2>
+
+    <p class="instruction">
+        Tap every balloon ✦
+    </p>
+
+    <div id="balloonArea"></div>
+
+    <div class="progress">
+        <span id="balloonCount">0</span> / 7 discovered
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     STAGE 2 — COLLECT STARS
+================================ -->
+
+<section id="starStage" class="screen">
+
+    <div class="stage-count">02 / 04</div>
+
+    <div class="eyebrow">A SECOND SECRET</div>
+
+    <h2>
+        Collect the<br>
+        golden stars.
+    </h2>
+
+    <p>
+        Something is locked away.<br>
+        Five stars will unlock it.
+    </p>
+
+    <div id="starArea"></div>
+
+    <div class="star-progress">
+        <span id="starCount">0</span> / 5
+    </div>
+
+    <div id="unlockText">
+        Keep looking ✦
+    </div>
+
+</section>
+
+
+<!-- ==============================
+     ENVELOPE
+================================ -->
+
+<section id="envelopeStage" class="screen">
+
+    <div class="stage-count">02 / 04</div>
+
+    <div class="eyebrow">YOU FOUND IT</div>
+
+    <h2>
+        One little message<br>
+        was waiting for you.
+    </h2>
+
+    <div class="envelope" onclick="openEnvelope()">
+
+        <div class="envelope-back"></div>
+
+        <div class="envelope-paper">
+            <div>For Ayesha ✦</div>
+        </div>
+
+        <div class="envelope-front"></div>
+
+    </div>
+
+    <p id="envelopeHint">
+        Open the envelope
+    </p>
+
+</section>
+
+
+<!-- ==============================
+     STAGE 3 — MEMORIES INTRO
+================================ -->
+
+<section id="memoryIntro" class="screen">
+
+    <div class="stage-count">03 / 04</div>
+
+    <div class="eyebrow">A FEW MEMORIES</div>
+
+    <h1>
+        Some moments<br>
+        deserve to be <span>kept.</span>
+    </h1>
+
+    <p>
+        Three memories.<br>
+        Three little chapters.
+    </p>
+
+    <button onclick="startMemories()">
+        Open the memories →
+    </button>
+
+</section>
+
+
+<!-- ==============================
+     MEMORIES
+================================ -->
+
+<section id="memoryStage" class="screen">
+
+    <div class="stage-count">03 / 04</div>
+
+    <div class="eyebrow">MEMORY <span id="memoryNumber">01</span></div>
+
+    <div class="memory-frame">
+
+        <div class="memory-glow"></div>
+
+        <img id="memoryImage"
+             src="IMG-20260814-WA0005.jpg"
+             alt="Memory">
+
+        <div class="memory-overlay">
+            <span>MEMORY</span>
+        </div>
+
+    </div>
+
+    <div class="memory-caption">
+
+        <div class="caption-line"></div>
+
+        <h3 id="memoryTitle">
+            A moment worth remembering
+        </h3>
+
+        <p id="memoryText">
+            Some moments quietly become
+            memories we never want to lose.
+        </p>
+
+    </div>
+
+    <button onclick="nextMemory()" id="memoryButton">
+        Reveal the next memory →
+    </button>
+
+</section>
+
+
+<!-- ==============================
+     STAGE 4 — FINAL
+================================ -->
+
+<section id="finalStage" class="screen">
+
+    <div id="fireworks"></div>
+
+    <div class="final-aura"></div>
+
+    <div class="eyebrow">
+        ONE LAST SURPRISE
+    </div>
+
+    <div class="final-star">
+        ✦
+    </div>
+
+    <h1>
+        Happy Birthday
+    </h1>
+
+    <h2 id="finalName">
+        Ayesha
+    </h2>
+
+    <div class="final-card">
+
+        <p>
+            May this new chapter of your life
+            be filled with beautiful moments,
+            peaceful days and countless reasons
+            to smile.
+        </p>
+
+        <div class="final-divider">
+            ✦　✧　✦
+        </div>
+
+        <p>
+            Keep shining, keep dreaming,
+            and keep making memories
+            worth remembering.
+        </p>
+
+        <strong>
+            With best wishes ♡
+        </strong>
+
+    </div>
+
+    <button onclick="location.reload()">
+        Experience it again ✦
+    </button>
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+          </html>
