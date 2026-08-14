@@ -1,320 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Mystery ✦</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Surprise for Ayesha ✦</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="ambient"></div>
-<div id="particles"></div>
+    <div class="background-glow"></div>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
 
-<audio id="bgMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
+    <div id="particles"></div>
 
+    <!-- MUSIC -->
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="ayesha_urdu_style_instrumental.wav" type="audio/wav">
+    </audio>
 
-<!-- ==============================
-     START
-================================ -->
-
-<section id="start" class="screen active">
-
-    <div class="orbit"></div>
-
-    <div class="eyebrow">A SECRET HAS BEEN PREPARED</div>
-
-    <div class="start-symbol">✦</div>
-
-    <h1>
-        Something<br>
-        <span>unexpected</span>
-        awaits.
-    </h1>
-
-    <p>
-        Four little surprises.<br>
-        One beautiful journey.
-    </p>
-
-    <button onclick="startExperience()">
-        Begin the mystery ✦
+    <button class="music-button"
+            id="musicButton"
+            onclick="toggleMusic()">
+        ♫
     </button>
 
-</section>
 
+    <!-- =====================================
+         INTRO
+    ====================================== -->
 
-<!-- ==============================
-     STAGE 1 — MYSTERY BOX
-================================ -->
+    <section id="intro" class="screen active">
 
-<section id="boxStage" class="screen">
-
-    <div class="stage-count">01 / 04</div>
-
-    <div class="eyebrow">THE FIRST SECRET</div>
-
-    <h2>
-        There's something<br>
-        inside the box.
-    </h2>
-
-    <div class="mystery-box" onclick="openBox()">
-
-        <div class="box-aura"></div>
-
-        <div class="box-lid">
-            <div class="box-ribbon"></div>
+        <div class="eyebrow">
+            A SECRET HAS BEEN PREPARED
         </div>
 
-        <div class="box-body">
-            <div class="box-ribbon"></div>
+        <div class="orbit">
+            <span>✦</span>
+            <span>✧</span>
+            <span>⋆</span>
+            <span>✦</span>
         </div>
 
-    </div>
-
-    <p id="boxHint">
-        Tap the box to open it
-    </p>
-
-    <div id="boxMessage" class="hidden-message">
-        <span>✦</span>
-        A little celebration is waiting...
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     BALLOON POP
-================================ -->
-
-<section id="balloonStage" class="screen">
-
-    <div class="stage-count">01 / 04</div>
-
-    <div class="eyebrow">POP THE MOMENTS</div>
-
-    <h2>
-        Find all<br>
-        seven surprises.
-    </h2>
-
-    <p class="instruction">
-        Tap every balloon ✦
-    </p>
-
-    <div id="balloonArea"></div>
-
-    <div class="progress">
-        <span id="balloonCount">0</span> / 7 discovered
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     STAGE 2 — COLLECT STARS
-================================ -->
-
-<section id="starStage" class="screen">
-
-    <div class="stage-count">02 / 04</div>
-
-    <div class="eyebrow">A SECOND SECRET</div>
-
-    <h2>
-        Collect the<br>
-        golden stars.
-    </h2>
-
-    <p>
-        Something is locked away.<br>
-        Five stars will unlock it.
-    </p>
-
-    <div id="starArea"></div>
-
-    <div class="star-progress">
-        <span id="starCount">0</span> / 5
-    </div>
-
-    <div id="unlockText">
-        Keep looking ✦
-    </div>
-
-</section>
-
-
-<!-- ==============================
-     ENVELOPE
-================================ -->
-
-<section id="envelopeStage" class="screen">
-
-    <div class="stage-count">02 / 04</div>
-
-    <div class="eyebrow">YOU FOUND IT</div>
-
-    <h2>
-        One little message<br>
-        was waiting for you.
-    </h2>
-
-    <div class="envelope" onclick="openEnvelope()">
-
-        <div class="envelope-back"></div>
-
-        <div class="envelope-paper">
-            <div>For Ayesha ✦</div>
-        </div>
-
-        <div class="envelope-front"></div>
-
-    </div>
-
-    <p id="envelopeHint">
-        Open the envelope
-    </p>
-
-</section>
-
-
-<!-- ==============================
-     STAGE 3 — MEMORIES INTRO
-================================ -->
-
-<section id="memoryIntro" class="screen">
-
-    <div class="stage-count">03 / 04</div>
-
-    <div class="eyebrow">A FEW MEMORIES</div>
-
-    <h1>
-        Some moments<br>
-        deserve to be <span>kept.</span>
-    </h1>
-
-    <p>
-        Three memories.<br>
-        Three little chapters.
-    </p>
-
-    <button onclick="startMemories()">
-        Open the memories →
-    </button>
-
-</section>
-
-
-<!-- ==============================
-     MEMORIES
-================================ -->
-
-<section id="memoryStage" class="screen">
-
-    <div class="stage-count">03 / 04</div>
-
-    <div class="eyebrow">MEMORY <span id="memoryNumber">01</span></div>
-
-    <div class="memory-frame">
-
-        <div class="memory-glow"></div>
-
-        <img id="memoryImage"
-             src="IMG-20260814-WA0005.jpg"
-             alt="Memory">
-
-        <div class="memory-overlay">
-            <span>MEMORY</span>
-        </div>
-
-    </div>
-
-    <div class="memory-caption">
-
-        <div class="caption-line"></div>
-
-        <h3 id="memoryTitle">
-            A moment worth remembering
-        </h3>
-
-        <p id="memoryText">
-            Some moments quietly become
-            memories we never want to lose.
-        </p>
-
-    </div>
-
-    <button onclick="nextMemory()" id="memoryButton">
-        Reveal the next memory →
-    </button>
-
-</section>
-
-
-<!-- ==============================
-     STAGE 4 — FINAL
-================================ -->
-
-<section id="finalStage" class="screen">
-
-    <div id="fireworks"></div>
-
-    <div class="final-aura"></div>
-
-    <div class="eyebrow">
-        ONE LAST SURPRISE
-    </div>
-
-    <div class="final-star">
-        ✦
-    </div>
-
-    <h1>
-        Happy Birthday
-    </h1>
-
-    <h2 id="finalName">
-        Ayesha
-    </h2>
-
-    <div class="final-card">
+        <h1>
+            Something
+            <span>beautiful</span>
+            is waiting.
+        </h1>
 
         <p>
-            May this new chapter of your life
-            be filled with beautiful moments,
-            peaceful days and countless reasons
-            to smile.
+            Don't rush.<br>
+            Every little step reveals something.
         </p>
 
-        <div class="final-divider">
-            ✦　✧　✦
+        <button class="premium-button"
+                onclick="startExperience()">
+
+            Begin the journey
+            <span>✦</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         NAME
+    ====================================== -->
+
+    <section id="nameScreen" class="screen">
+
+        <div class="eyebrow">
+            THIS LITTLE WORLD IS FOR
         </div>
 
-        <p>
-            Keep shining, keep dreaming,
-            and keep making memories
-            worth remembering.
+        <div class="name-frame">
+
+            <div class="frame-corner tl"></div>
+            <div class="frame-corner tr"></div>
+            <div class="frame-corner bl"></div>
+            <div class="frame-corner br"></div>
+
+            <p>especially for</p>
+
+            <h2>
+                Ayesha
+            </h2>
+
+            <div class="gold-line"></div>
+
+            <p>
+                Some people don't need a reason
+                to be remembered.
+            </p>
+
+        </div>
+
+        <button class="premium-button"
+                onclick="goTo('boxScreen')">
+
+            Continue
+            <span>→</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         MYSTERY BOX
+    ====================================== -->
+
+    <section id="boxScreen" class="screen">
+
+        <div class="eyebrow">
+            SURPRISE 01
+        </div>
+
+        <h2>
+            A mystery<br>
+            is waiting.
+        </h2>
+
+        <div class="mystery-box"
+             onclick="openMysteryBox()">
+
+            <div class="box-glow"></div>
+
+            <div class="box-lid">
+
+                <div class="box-ribbon"></div>
+
+            </div>
+
+            <div class="box-body">
+
+                <div class="box-ribbon"></div>
+
+                <div class="box-lock">
+                    ✦
+                </div>
+
+            </div>
+
+        </div>
+
+        <p id="boxHint">
+            Tap the box to unlock it
         </p>
 
-        <strong>
-            With best wishes ♡
-        </strong>
-
-    </div>
-
-    <button onclick="location.reload()">
-        Experience it again ✦
-    </button>
-
-</section>
+    </section>
 
 
-<script src="script.js"></script>
+    <!-- =====================================
+         BALLOON POP
+    ====================================== -->
+
+    <section id="balloonScreen" class="screen">
+
+        <div class="eyebrow">
+            SURPRISE 02
+        </div>
+
+        <h2>
+            Pop the balloons.
+        </h2>
+
+        <p>
+            There's something hidden
+            behind them.
+        </p>
+
+        <div id="balloonArea"
+             class="balloon-area">
+
+        </div>
+
+        <div class="collection-counter">
+
+            Collected:
+            <span id="balloonCount">
+                0
+            </span>
+            / 6
+
+        </div>
+
+        <button id="balloonContinue"
+                class="premium-button hidden"
+                onclick="goTo('collectScreen')">
+
+            Continue
+            <span>→</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         COLLECTION
+    ====================================== -->
+
+    <section id="collectScreen"
+          class="screen">
+
+        <div class="eyebrow">
+            SOMETHING WAS LEFT BEHIND
+        </div>
+
+        <h2>
+            Collect the<br>
+            little stars.
+        </h2>
+
+        <p>
+            Each one carries a tiny message.
+        </p>
+
+        <div class="star-field"
+             id="starField">
+
+        </div>
+
+        <div class="collection-counter">
+
+            Found:
+            <span id="starCount">
+                0
+            </span>
+            / 5
+
+        </div>
+
+        <button id="starContinue"
+                class="premium-button hidden"
+                onclick="openSecret()">
+
+            Open the secret
+            <span>✦</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         SECRET
+    ====================================== -->
+
+    <section id="secretScreen"
+          class="screen">
+
+        <div class="eyebrow">
+            A LITTLE SECRET
+        </div>
+
+        <div class="secret-orb">
+
+            <div class="orb-core">
+                ♡
+            </div>
+
+        </div>
+
+        <h2>
+            Not everything
+            beautiful needs
+            an explanation.
+        </h2>
+
+        <p>
+            Sometimes a small moment,
+            a kind person and a good memory
+            are enough.
+        </p>
+
+        <button class="premium-button"
+                onclick="goTo('memories')">
+
+            Discover the memories
+            <span>→</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         MEMORIES
+    ====================================== -->
+
+    <section id="memories"
+          class="screen">
+
+        <div class="eyebrow">
+            THREE LITTLE MEMORIES
+        </div>
+
+        <h2>
+            Moments worth<br>
+            keeping.
+        </h2>
+
+        <div class="memory-card"
+             id="memoryCard">
+
+            <div class="memory-image">
+
+                <img
+                    id="memoryImage"
+                    src="IMG-20260814-WA0005.jpg"
+                    alt="Memory">
+
+                <div class="memory-overlay"></div>
+
+                <div class="memory-number"
+                     id="memoryNumber">
+
+                    01 / 03
+
+                </div>
+
+            </div>
+
+            <div class="memory-caption"
+                 id="memoryCaption">
+
+                A moment worth remembering ✦
+
+            </div>
+
+        </div>
+
+        <button class="premium-button"
+                id="memoryButton"
+                onclick="nextMemory()">
+
+            Next memory
+            <span>→</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         WISHES
+    ====================================== -->
+
+    <section id="wishScreen"
+          class="screen">
+
+        <div class="eyebrow">
+            A FEW WORDS FOR YOU
+        </div>
+
+        <div class="wish-card">
+
+            <div class="wish-symbol">
+                ✦
+            </div>
+
+            <h2>
+                For Ayesha
+            </h2>
+
+            <div class="gold-line"></div>
+
+            <p>
+                May the days ahead bring you
+                new reasons to smile,
+                peaceful moments to remember,
+                and people who genuinely
+                value your presence.
+            </p>
+
+            <p>
+                May the things you quietly wish
+                for find their way toward you,
+                one beautiful moment at a time.
+            </p>
+
+            <p>
+                And whenever life feels ordinary,
+                may something unexpected remind
+                you that there is still a little
+                magic left to discover.
+            </p>
+
+            <div class="wish-signature">
+                Keep shining ✦
+            </div>
+
+        </div>
+
+        <button class="premium-button"
+                onclick="showFinal()">
+
+            One final surprise
+            <span>✦</span>
+
+        </button>
+
+    </section>
+
+
+    <!-- =====================================
+         FINAL
+    ====================================== -->
+
+    <section id="finalScreen"
+          class="screen">
+
+        <div class="final-rays"></div>
+
+        <div class="final-stars">
+            ✦　✧　⋆　✧　✦
+        </div>
+
+        <div class="final-heart">
+            ♡
+        </div>
+
+        <div class="eyebrow">
+            ONE LAST THING
+        </div>
+
+        <h1>
+            Stay
+            <span>beautiful.</span>
+        </h1>
+
+        <h2 class="final-name">
+            Ayesha
+        </h2>
+
+        <p>
+            Not because everything will always
+            be perfect, but because every new
+            chapter can still bring something
+            wonderful.
+        </p>
+
+        <div class="final-message">
+            ✦ May your next chapter be
+            even more beautiful than the last. ✦
+        </div>
+
+        <button class="premium-button"
+                onclick="location.reload()">
+
+            Experience again
+            <span>↻</span>
+
+        </button>
+
+    </section>
+
+
+    <script src="script.js"></script>
 
 </body>
-          </html>
+                </html>
